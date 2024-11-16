@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Callbacks</title>
+
+        <style>
+            .message-ball {
+                font-size: 20px;
+                line-height: 200px;
+                text-align: center;
+            }
+
+            .circle {
+              transition-property: width, height, margin-left, margin-top;
+              transition-duration: 2s;
+              position: fixed;
+              transform: translateX(-50%) translateY(-50%);
+              background-color: red;
+              border-radius: 50%;
+              margin-top: 100px;
+            }
+        </style>
+
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <p>This is a basic understanding of callbacks.</p>
+        <a href="https://javascript.info/callbacks">Reference link.</a>
+        <input id="name" type="text" onchange="sayHello()">
+
+        <p>Animated circle</p>
+        <button onclick="buttonAnimatedClickPromises()">Show Circle (150, 150, 100)</button>
+        <div id="animated-circle"></div>
+    </body>
+</html>

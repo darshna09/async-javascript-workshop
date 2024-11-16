@@ -1,0 +1,66 @@
+<!-- Animated circle -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <meta charset="utf-8">
+ <style>
+   .circle {
+     transition-property: width, height, margin-left, margin-top;
+     transition-duration: 2s;
+     position: fixed;
+     transform: translateX(-50%) translateY(-50%);
+     background-color: red;
+     border-radius: 50%;
+   }
+   
+   .message-ball{
+	color: #006699;
+	font-weight:bold;
+	text-align: center;
+	display: flex;
+   }
+   
+  .message-ball p{
+	margin:auto
+   }
+ </style>
+</head>
+
+<body>
+ <button onclick="showCircle(150, 150, 100, myCBFunc)">showCircle(150, 150, 100)</button>
+ <script>
+
+ function myCBFunc(div){
+	 div.classList.add('message-ball');
+	 var para = document.createElement("p");
+	 var t = document.createTextNode("Hello, World!"); 
+	 para.appendChild(t);
+     div.appendChild(para);
+	 }
+ 
+ 
+ function showCircle(cx, cy, radius,callbackFunc) {
+   let div = document.createElement('div');
+   div.style.width = 0;
+   div.style.height = 0;
+   div.style.left = cx + 'px';
+   div.style.top = cy + 'px';
+   div.className = 'circle';
+   div.id = 'idCircle';
+   document.body.append(div);
+ $("#idCircle").one("transitionend", function(){
+//reference - https://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes
+  if (typeof callbackFunc == "function") {
+                callbackFunc(div); 
+        }
+ });
+    setTimeout(() => {
+     div.style.width = radius * 2 + 'px';
+     div.style.height = radius * 2 + 'px';  
+	}, 0);
+
+ }
+ </script>
+</body>
+</html>
